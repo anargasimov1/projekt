@@ -166,10 +166,11 @@
     width: 350px;
 }
 
-.contact_logo>i {
+.icons{
     font-size: 22px;
     color: #c05d0d;
-    margin-left: 10px;
+    display: flex;
+    gap: 20px;
 }
 
 .contact_logo>p {
@@ -244,6 +245,26 @@
     font-size: 25px;
     font-family: sans-serif;
     cursor: pointer;
+}
+.fa-instagram,
+.fa-square-facebook,
+.fa-linkedin,
+.fa-square-twitter {
+    cursor: pointer;
+    position: relative;
+}
+
+.fa-instagram:hover {
+    bottom: 7px;
+}
+.fa-linkedin:hover {
+    bottom: 7px;
+}
+.fa-square-facebook:hover {
+    bottom: 7px;
+}
+.fa-square-twitter:hover {
+    bottom: 7px;
 }
 @media only screen and (max-width:980px){
     .navbar {

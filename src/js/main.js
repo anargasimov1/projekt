@@ -16,21 +16,21 @@ const btn_left = document.getElementById("btn_left"),
     btn_rigth = document.getElementById("btn_rigth"),
     swiper = document.getElementById("swiper_slide"),
     count = swiper.children.length - 3;
-    
-    let index = 0;
 
-    btn_rigth.addEventListener("click", () => {
+let index = 0;
 
-        if (index < count) {
-            index++;
-            swiper.style.transform = `translateX(${365 * -index}px)`
-            if (index === count) {
-                index = 0
-                swiper.style.transform = `translateX(${index}%)`
-            }
-        };
+btn_rigth.addEventListener("click", () => {
 
-    })
+    if (index < count) {
+        index++;
+        swiper.style.transform = `translateX(${365 * -index}px)`
+        if (index === count) {
+            index = 0
+            swiper.style.transform = `translateX(${index}%)`
+        }
+    };
+
+})
 btn_left.addEventListener("click", () => {
 
     if (index > 0) {
@@ -52,6 +52,20 @@ setInterval(function () {
     };
 }, 2000);
 
+// footer swiper
+
+const footer_btn_left = document.getElementById("footer_swiper_button_left"),
+    footer_btn_rigth = document.getElementById("footer_swiper_button_rigth"),
+    footer_content = document.querySelector(".footer_swiper_content");
+
+let temp = 0;
+
+// footer_btn_rigth.addEventListener("click", () => {
+//     if (temp < footer_content.children.length - 2) {
+//         temp++;
+//         footer_content.style.transform = `translateX(${100 * -temp}px)`;
+//     }
+// })
 
 // hover contents
 

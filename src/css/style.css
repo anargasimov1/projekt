@@ -295,42 +295,61 @@
 .footer_swiper {
     margin-top: 25px;
     height: 85vh;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    overflow: hidden;
 }
 
 .footer_swiper_content {
-    justify-content: center;
-    align-items: center;
     display: flex;
     gap: 10px;
-    width: 100%;
+    transition: 2s ease all;
+    width: 1000px;
+    overflow: hidden;
+    justify-content: center;
+    margin-left: 200px;
 }
 
-.footer_swiper_content>button {
+#footer_swiper_button_rigth {
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
     font-size: 35px;
     background-color: transparent;
     border: none;
     color: #c05d0d;
     cursor: pointer;
+    position: absolute;
+}
+
+#footer_swiper_button_left {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    font-size: 35px;
+    background-color: transparent;
+    border: none;
+    color: #c05d0d;
+    cursor: pointer;
+    position: absolute;
 }
 
 .footer_swiper_slide {
-    width: 500px;
+    min-width: 500px;
     height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-bottom-right-radius: 35px;
-    transition: 0.5s ease all;
 }
 
 .footer_swiper_slide_hidden {
     width: 500px;
     height: 300px;
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -427,8 +446,10 @@
 }
 
 
+
+
 @media only screen and (max-width:980px) {
-    
+
     .section {
         margin-top: 60px;
         height: 80vh;
@@ -493,12 +514,20 @@
         margin-right: 200px;
     }
 
-    .footer_swiper_slide {
+
+    .footer_swiper>button {
         display: none;
     }
 
-    .footer_swiper_content>button {
+    .footer_swiper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer_swiper_content {
         display: none;
+
     }
 
     .footer_swiper_slide_hidden {
@@ -594,6 +623,5 @@
     .footer_swiper_content>button {
         display: none;
     }
-
 
 }
