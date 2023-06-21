@@ -15,9 +15,31 @@ btn.addEventListener("click", () => {
 const btn_left = document.getElementById("btn_left"),
     btn_rigth = document.getElementById("btn_rigth"),
     swiper = document.getElementById("swiper_slide"),
-    count = swiper.children.length - 3;
+    url = "https://living-chemical-shampoo.glitch.me/swiper";
 
 let index = 0;
+let count = 0;
+
+fetch(url)
+    .then(r => r.json())
+    .then(data => addswiper(data))
+    .catch(error => console.error(error));
+
+function addswiper(data) {
+    for (let i = 0; i < data.length; ++i) {
+        swiper.innerHTML +=
+            `
+        <div class="swiper_slide_item">
+        <img src=${data[i].img}>
+        <h3>${data[i].title}</h3>
+        <p>${data[i].description}</p>
+        <button type="button">$20 | Oreder Now</button>
+          </div>
+        `
+        count = data.length - 3;
+    }
+}
+
 
 btn_rigth.addEventListener("click", () => {
 
@@ -41,7 +63,7 @@ btn_left.addEventListener("click", () => {
 })
 
 
-setInterval(function () {
+setInterval(() => {
     if (index < count) {
         index++;
         swiper.style.transform = `translateX(${365 * -index}px)`
@@ -56,16 +78,49 @@ setInterval(function () {
 
 const footer_btn_left = document.getElementById("footer_swiper_button_left"),
     footer_btn_rigth = document.getElementById("footer_swiper_button_rigth"),
-    footer_content = document.querySelector(".footer_swiper_content");
+    footer_swiper = document.getElementById("footer_swiper"),
+    url2 = "https://living-chemical-shampoo.glitch.me/footerswiper";
 
 let temp = 0;
+let footercount = 0;
 
-// footer_btn_rigth.addEventListener("click", () => {
-//     if (temp < footer_content.children.length - 2) {
-//         temp++;
-//         footer_content.style.transform = `translateX(${100 * -temp}px)`;
-//     }
-// })
+fetch(url2)
+    .then(r => r.json())
+    .then(data => footerswiper(data))
+    .catch(error => console.error(error))
+
+function footerswiper(data) {
+    footercount = data.length;
+    data.map(i => footer_swiper.innerHTML +=
+        `
+        <div class="footer_swiper_slide">
+        <p>"${i.title}"</p>
+        <div class="items">
+            <img src=${i.img} alt="...">
+            <div class="items1">
+                <p>${i.name}</p>
+                <i>${i.profession}</i>
+            </div>
+           </div>
+          </div>
+        `
+    )
+}
+
+footer_btn_rigth.addEventListener("click", () => {
+    if (temp < footercount - 2) {
+        temp++;
+        footer_swiper.style.transform = `translateX(${500 * -temp}px)`
+    }
+})
+
+
+footer_btn_left.addEventListener("click", () => {
+    if (temp > 0) {
+        temp--;
+        footer_swiper.style.transform = `translateX(${500 * -temp}px)`
+    }
+})
 
 // hover contents
 
