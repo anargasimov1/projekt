@@ -1,0 +1,55 @@
+@import url(./root.css);
+
+.section {
+    height: 55vh;
+    position: relative;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 192, 203, 0.295);
+    margin-bottom: 55px;
+
+}
+
+.img_left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -3;
+}
+
+.img_rigth {
+    position: absolute;
+    bottom: 0;
+    right: -20%;
+    z-index: -3;
+}
+
+.section>h1 {
+    font-size: 60px;
+    font-family: var(--font-family-monospace);
+
+}
+
+/* message */
+
+.message {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.mesaj{
+    height: 70px;
+    width: 300px;
+    resize: both;
+    overflow: auto;
+    padding-bottom: 60px;
+}
+.inputs{
+    width: 60%;
+}
+.adres{
+    width: 20%;
+}

@@ -1,5 +1,30 @@
 "use srtict";
 
+// hamburger menu
+
+const btn = document.getElementById("btn"),
+    menu = document.getElementById("menu");
+
+let modal = false;
+
+btn.addEventListener("click", () => {
+    modal = !modal;
+    modal === true ? menu.style.width = "100%" : menu.style.width = "0";
+});
+
+// section
+
+const section_index = document.querySelector(".section_index");
+
+setInterval(()=>{
+    section_index.style.scale = "1.05";
+},1000);
+
+setInterval(()=>{
+    section_index.style.scale = "1";
+},2000)
+
+
 // praducts
 
 const url = "https://living-chemical-shampoo.glitch.me/swiper",
@@ -16,10 +41,10 @@ function addpraducts(data) {
         praducts.innerHTML +=
             `
         <div class="swiper_slide_item">
-        <img src=${data[i].img}>
+       <div class="img_item"> <img src=${data[i].img}></div>
         <h3>${data[i].title}</h3>
         <p>${data[i].description}</p>
-        <button type="button">$20 | Oreder Now</button>
+        <button class="card_btn" type="button">$20 | Oreder Now</button>
           </div>
         `
     }

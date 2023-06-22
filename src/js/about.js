@@ -1,3 +1,4 @@
+
 "use srtict";
 // hamburger menu
 const btn = document.getElementById("btn"),
@@ -9,72 +10,6 @@ btn.addEventListener("click", () => {
     modal = !modal;
     modal === true ? menu.style.width = "100%" : menu.style.width = "0";
 });
-
-// swiper (main)
-
-const btn_left = document.getElementById("btn_left"),
-    btn_rigth = document.getElementById("btn_rigth"),
-    swiper_slide = document.getElementById("swiper_slide"),
-    url = "https://living-chemical-shampoo.glitch.me/swiper",
-    swiper = document.querySelector(".swiper");
-
-
-let index = 0;
-let count = 0;
-
-fetch(url)
-    .then(r => r.json())
-    .then(data => addswiper(data))
-    .catch(error => swiper.innerHTML = `${error}`, swiper.style.fontSize = "40px");
-
-function addswiper(data) {
-    for (let i = 0; i < data.length; ++i) {
-        swiper_slide.innerHTML +=
-            `
-        <div class="swiper_slide_item">
-        <img src=${data[i].img}>
-        <h3>${data[i].title}</h3>
-        <p>${data[i].description}</p>
-        <button type="button">$20 | Oreder Now</button>
-          </div>
-        `
-        count = data.length - 3;
-    }
-}
-
-
-btn_rigth.addEventListener("click", () => {
-
-    if (index < count) {
-        index++;
-        swiper_slide.style.transform = `translateX(${365 * -index}px)`
-        if (index === count) {
-            index = 0
-            swiper.style.transform = `translateX(${index}%)`
-        }
-    };
-
-})
-btn_left.addEventListener("click", () => {
-
-    if (index > 0) {
-        index--;
-        swiper_slide.style.transform = `translateX(${365 * -index}px)`
-    }
-
-})
-
-
-setInterval(() => {
-    if (index < count) {
-        index++;
-        swiper_slide.style.transform = `translateX(${365 * -index}px)`
-        if (index === count) {
-            index = 0
-            swiper.style.transform = `translateX(${index}%)`
-        }
-    };
-}, 2000);
 
 // footer swiper
 

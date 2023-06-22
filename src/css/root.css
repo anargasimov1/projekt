@@ -33,6 +33,10 @@
     margin: 0;
     box-sizing: border-box;
 }
+body{
+  max-width: 1520px;
+  margin: 0 auto;
+}
 /* navbar */
 
 .navbar {
@@ -104,8 +108,6 @@
     width: 100%;
     z-index: 10;
     display: none;
-
-
 }
 
 .btn {
