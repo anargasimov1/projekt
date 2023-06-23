@@ -9,20 +9,21 @@ let modal = false;
 
 btn.addEventListener("click", () => {
     modal = !modal;
-    modal === true ? menu.style.width = "100%" : menu.style.width = "0";
+    modal === true ? menu.style.scale = "1" : menu.style.scale = "0";
 });
+
 
 // section
 
 const section_index = document.querySelector(".section_index");
 
-setInterval(()=>{
+setInterval(() => {
     section_index.style.scale = "1.05";
-},1000);
+}, 1000);
 
-setInterval(()=>{
+setInterval(() => {
     section_index.style.scale = "1";
-},2000)
+}, 2000)
 
 
 // praducts
@@ -34,22 +35,37 @@ const url = "https://living-chemical-shampoo.glitch.me/swiper",
 fetch(url)
     .then(r => r.json())
     .then(data => addpraducts(data))
-    .catch(error => console.error(error));
+    .catch(error => praducts.innerHTML = `${error}`);
 
 function addpraducts(data) {
     for (let i = 0; i < data.length; ++i) {
         praducts.innerHTML +=
             `
-        <div class="swiper_slide_item">
+      <div class="swiper_slide_item">
        <div class="img_item"> <img src=${data[i].img}></div>
         <h3>${data[i].title}</h3>
         <p>${data[i].description}</p>
+                  <><><><><><><><><><><><><><><><><>
         <button class="card_btn" type="button">$20 | Oreder Now</button>
+              <button type="button"><i data-role = ${data[i].id} class="fa-regular fa-heart"></i></button>
           </div>
         `
+        document.addEventListener("click", e => {
+            if (e.target.dataset.role === data[i].id) {
+                e.target.parentElement.style.backgroundColor = "green";
+                let title = data[i].title,
+                    img = data[i].img,
+                    description = data[i].description;
+                let hearts = {title, img, description};
+                console.log(hearts);
+            }
+        })
     }
 }
 
+const urlsweet = "https://grizzly-pastoral-stove.glitch.me/sweets"
+
+// https://glitch.com/edit/#!/grizzly-pastoral-stove?path=db.json%3A3%3A4
 
 
 

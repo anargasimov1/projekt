@@ -7,7 +7,7 @@ let modal = false;
 
 btn.addEventListener("click", () => {
     modal = !modal;
-    modal === true ? menu.style.width = "100%" : menu.style.width = "0";
+    modal === true ? menu.style.scale = "1" : menu.style.scale = "0";
 });
 
 // swiper (main)

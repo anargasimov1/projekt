@@ -1,5 +1,11 @@
 @import url(./root.css);
 
+
+.nav_rigth>p {
+    font-size: 25px;
+    color: orange;
+}
+
 /* section */
 
 .section {
@@ -52,7 +58,9 @@
 }
 
 
-
+.content{
+    height: 100vh;
+}
 
 
 /* praducts */
@@ -115,27 +123,31 @@
     line-height: 25px;
     font-size: 17px;
 }
-.img_item>img{
+
+.img_item>img {
     scale: 1.1;
     transition: 0.5s ease all;
 
-    
+
 }
-.img_item{
+
+.img_item {
     display: flex;
     justify-content: center;
     width: 90%;
     overflow: hidden;
     border-bottom-right-radius: 30px;
 }
-.card_btn{
+
+.card_btn {
     position: relative;
 }
 
-.swiper_slide_item:hover>.img_item>img{
+.swiper_slide_item:hover>.img_item>img {
     scale: 1;
 }
-.swiper_slide_item:hover>.card_btn{
+
+.swiper_slide_item:hover>.card_btn {
     bottom: 5px;
 }
 
@@ -207,11 +219,15 @@
         font-size: 60px;
         margin-left: 280px;
     }
-    .img1, .img3{
+
+    .img1,
+    .img2 {
         display: none;
     }
-    .img2, .img1{
-        width: 100%;
+
+    .img3,
+    .img4 {
+        width: 50%;
     }
 
 }
@@ -240,7 +256,8 @@
         left: 0;
         top: 50%;
     }
-    .swiper_slide_item{
+
+    .swiper_slide_item {
         width: 450px;
     }
 }
