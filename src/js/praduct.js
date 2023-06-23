@@ -29,7 +29,8 @@ setInterval(() => {
 // praducts
 
 const url = "https://living-chemical-shampoo.glitch.me/swiper",
-    praducts = document.getElementById("praducts");
+    praducts = document.getElementById("praducts"),
+    contenier = document.querySelector(".count");
 
 
 fetch(url)
@@ -52,13 +53,24 @@ function addpraducts(data) {
         `
         document.addEventListener("click", e => {
             if (e.target.dataset.role === data[i].id) {
+                
                 e.target.parentElement.style.backgroundColor = "green";
                 let title = data[i].title,
                     img = data[i].img,
                     description = data[i].description;
-                let hearts = {title, img, description};
-                console.log(hearts);
+                let hearts = { title, img, description };
+
+                fetch(urlsweet, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(hearts)
+                }
+                )
+                    .catch(error => e.target.innerHTML = `${error}`);
             }
+
         })
     }
 }

@@ -1,9 +1,34 @@
 @import url(./root.css);
 
+.hearts{
+    width: 20px;
+    color: rgba(0, 128, 45, 0.963);
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    cursor: pointer;
+}
 
 .nav_rigth>p {
-    font-size: 25px;
+    font-size: 32px;
     color: orange;
+    margin-right: 20px;
+    position: relative;
+}
+
+.count{
+    position: absolute;
+    font-size: 17px;
+    right: -8px;
+    color: white;
+    bottom: 20px;
+    background-color: black;
+    border-radius: 50%;
+    padding: 0 3px;
 }
 
 /* section */
@@ -57,13 +82,8 @@
     z-index: -5;
 }
 
-
-.content{
-    height: 100vh;
-}
-
-
 /* praducts */
+
 .main {
     width: 100%;
     justify-content: center;

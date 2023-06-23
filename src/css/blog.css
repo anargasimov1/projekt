@@ -1,1 +1,59 @@
 @import url(./root.css);
+
+.contenier {
+    height: 85vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 60px;
+}
+
+.swiper_slide_item {
+    background-color: #e3c9d56d;
+    min-width: 350px;
+    height: 430px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.swiper_slide_item>img {
+    width: 92%;
+    height: 50%;
+    border-bottom-right-radius: 25px;
+}
+
+.swiper_slide_item>button {
+    width: 185px;
+    height: 45px;
+    border-radius: 25px;
+    background-color: #c05d0d;
+    color: white;
+    font-size: 20px;
+    border: none;
+    font-family: var(--font-family-sans-serif);
+}
+
+.swiper_slide_item>h3 {
+    font-family: var(--font-family-monospace);
+    font-size: 25px;
+}
+
+.swiper_slide_item>p {
+    width: 230px;
+    color: gray;
+    text-align: center;
+    line-height: 25px;
+    font-size: 17px;
+}
+
+@media only screen and (max-width:900px) {
+    .contenier{
+        height: auto;
+    }
+}
