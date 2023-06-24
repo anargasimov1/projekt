@@ -30,8 +30,13 @@ setInterval(() => {
 
 const url = "https://living-chemical-shampoo.glitch.me/swiper",
     praducts = document.getElementById("praducts"),
-    contenier = document.querySelector(".count");
+    contenier = document.querySelector(".count"),
+    urlsweet = "https://grizzly-pastoral-stove.glitch.me/sweets",
+    count_hidden = document.querySelector(".count_hidden");
 
+let arr = [];
+let color = "";
+let toggle = false;
 
 fetch(url)
     .then(r => r.json())
@@ -39,6 +44,7 @@ fetch(url)
     .catch(error => praducts.innerHTML = `${error}`);
 
 function addpraducts(data) {
+
     for (let i = 0; i < data.length; ++i) {
         praducts.innerHTML +=
             `
@@ -52,32 +58,43 @@ function addpraducts(data) {
           </div>
         `
         document.addEventListener("click", e => {
-            if (e.target.dataset.role === data[i].id) {
-                
-                e.target.parentElement.style.backgroundColor = "green";
+            toggle = true;
+            let id = e.target.dataset.role;
+            if (id === data[i].id) {
+
                 let title = data[i].title,
                     img = data[i].img,
-                    description = data[i].description;
-                let hearts = { title, img, description };
+                    description = data[i].description,
+                    id = data[i].id,
+                    hearts = { title, img, description, id };
+                if (toggle === true) {
+                    color = "green";
+                    e.target.parentElement.style.backgroundColor = `${color}`;
+                    fetch(urlsweet, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(hearts)
+                    }
+                    )
+                   .catch(error => e.target.innerHTML = `${error}`);
 
-                fetch(urlsweet, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(hearts)
                 }
-                )
-                    .catch(error => e.target.innerHTML = `${error}`);
             }
 
         })
     }
 }
 
-const urlsweet = "https://grizzly-pastoral-stove.glitch.me/sweets"
+fetch(urlsweet)
+    .then(r => r.json())
+    .then(data => wishlist(data))
 
-// https://glitch.com/edit/#!/grizzly-pastoral-stove?path=db.json%3A3%3A4
+function wishlist(data) {
+    contenier.innerText = `${data.length}`;
+    count_hidden.innerText = `${data.length}`;
+}
 
 
 

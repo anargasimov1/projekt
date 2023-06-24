@@ -1,5 +1,17 @@
 @import url(./root.css);
 
+.count_hidden{
+    position: absolute;
+    color: white;
+    z-index: 2;
+    left: 42px;
+    top: 7px;
+    font-size: 15px;
+    border-radius: 50%;
+    background-color: gray;
+    padding: 2px 7px;
+}
+
 .hearts{
     width: 20px;
     color: rgba(0, 128, 45, 0.963);

@@ -11,7 +11,7 @@ btn.addEventListener("click", () => {
     modal === true ? menu.style.scale = "1" : menu.style.scale = "0";
 });
 
-// hearts
+// wishlist
 
 const contenier = document.querySelector(".contenier"),
     url = "https://grizzly-pastoral-stove.glitch.me/sweets";
@@ -20,7 +20,11 @@ fetch(url)
     .then(r => r.json())
     .then(data => items(data));
 
+let item = [];
+
 function items(data) {
+    item = data;
+
     for (let i = 0; i < data.length; ++i) {
         contenier.innerHTML +=
             `
@@ -33,6 +37,13 @@ function items(data) {
               <button type="button"><i data-role = ${data[i].id} class="fa-solid fa-trash"></i> </button>
           </div>
         `
+    }
 }
 
-}
+document.addEventListener("click", e => {
+    let id = e.target.dataset.role;
+    fetch(`${url}/${id}`, {
+        method: "DELETE"
+    });
+
+})

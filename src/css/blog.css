@@ -1,7 +1,7 @@
 @import url(./root.css);
 
 .contenier {
-    height: 85vh;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
