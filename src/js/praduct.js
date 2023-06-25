@@ -35,8 +35,8 @@ const url = "https://living-chemical-shampoo.glitch.me/swiper",
     count_hidden = document.querySelector(".count_hidden");
 
 let arr = [];
-let color = "";
 let toggle = false;
+let color = true;
 
 fetch(url)
     .then(r => r.json())
@@ -59,17 +59,17 @@ function addpraducts(data) {
         `
         document.addEventListener("click", e => {
             toggle = true;
+            localStorage.setItem("color", "green")
             let id = e.target.dataset.role;
-            if (id === data[i].id) {
-
+            if (id === data[i].id || color === true) {
                 let title = data[i].title,
                     img = data[i].img,
                     description = data[i].description,
                     id = data[i].id,
-                    hearts = { title, img, description, id };
+                    hearts = {
+                        title, img, description, id,
+                    };
                 if (toggle === true) {
-                    color = "green";
-                    e.target.parentElement.style.backgroundColor = `${color}`;
                     fetch(urlsweet, {
                         method: "POST",
                         headers: {
@@ -78,11 +78,17 @@ function addpraducts(data) {
                         body: JSON.stringify(hearts)
                     }
                     )
-                   .catch(error => e.target.innerHTML = `${error}`);
+                        .then(r => {
+                            if (r.ok) {
+                                fetch(urlsweet)
+                                    .then(r => r.json())
+                                    .then(data => wishlist(data))
+                            }
+                        })
+                        .catch(error => e.target.innerHTML = `${error}`);
 
                 }
             }
-
         })
     }
 }
@@ -95,8 +101,6 @@ function wishlist(data) {
     contenier.innerText = `${data.length}`;
     count_hidden.innerText = `${data.length}`;
 }
-
-
 
 
 // hover context
