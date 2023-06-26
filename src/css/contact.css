@@ -135,6 +135,7 @@
 
     .section {
         overflow: hidden;
+        width: auto;
     }
 
     .message {
@@ -201,5 +202,8 @@
     .subject{
         width: 400px;
     }
+   .img_rigth{
+    display: none;
+   }
 
 }

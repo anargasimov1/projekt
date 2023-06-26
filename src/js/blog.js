@@ -20,10 +20,8 @@ fetch(url)
     .then(r => r.json())
     .then(data => items(data));
 
-let item = [];
 
 function items(data) {
-    item = data;
 
     for (let i = 0; i < data.length; ++i) {
         contenier.innerHTML +=
@@ -38,12 +36,13 @@ function items(data) {
           </div>
         `
     }
+
 }
+
 
 document.addEventListener("click", e => {
     let id = e.target.dataset.role;
     fetch(`${url}/${id}`, {
         method: "DELETE"
-    });
-
+    })
 })

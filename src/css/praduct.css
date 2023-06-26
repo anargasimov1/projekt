@@ -94,6 +94,22 @@
     z-index: -5;
 }
 
+#search{
+    width: 800px;
+    margin-bottom: 90px;
+    margin-left: 370px;
+    height: 40px;
+    padding-left: 5px;
+}
+
+.fa-magnifying-glass{
+    position: relative;
+    right: 30px;
+    scale: 1.2;
+    opacity: 0.5;
+}
+
+
 /* praducts */
 
 .main {
@@ -252,6 +268,11 @@
         margin-left: 280px;
     }
 
+    #search{
+        width: 500px;
+        margin-left: 130px;
+    }
+
     .img1,
     .img2 {
         display: none;
@@ -287,6 +308,10 @@
     .section>p {
         left: 0;
         top: 50%;
+    }
+    #search{
+        width: 400px;
+        margin-left: 50px;
     }
 
     .swiper_slide_item {

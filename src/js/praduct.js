@@ -32,11 +32,11 @@ const url = "https://living-chemical-shampoo.glitch.me/swiper",
     praducts = document.getElementById("praducts"),
     contenier = document.querySelector(".count"),
     urlsweet = "https://grizzly-pastoral-stove.glitch.me/sweets",
-    count_hidden = document.querySelector(".count_hidden");
-
+    count_hidden = document.querySelector(".count_hidden"),
+    serach = document.getElementById("serach");
 let arr = [];
 let toggle = false;
-let color = true;
+let color = "red"
 
 fetch(url)
     .then(r => r.json())
@@ -44,7 +44,6 @@ fetch(url)
     .catch(error => praducts.innerHTML = `${error}`);
 
 function addpraducts(data) {
-
     for (let i = 0; i < data.length; ++i) {
         praducts.innerHTML +=
             `
@@ -54,52 +53,35 @@ function addpraducts(data) {
         <p>${data[i].description}</p>
                   <><><><><><><><><><><><><><><><><>
         <button class="card_btn" type="button">$20 | Oreder Now</button>
-              <button type="button"><i data-role = ${data[i].id} class="fa-regular fa-heart"></i></button>
+              <button type="button"><i  data-role = ${data[i].id} class="fa-regular fa-heart"></i></button>
           </div>
         `
         document.addEventListener("click", e => {
             toggle = true;
-            localStorage.setItem("color", "green")
             let id = e.target.dataset.role;
-            if (id === data[i].id || color === true) {
+            if (id === data[i].id) {
                 let title = data[i].title,
                     img = data[i].img,
                     description = data[i].description,
                     id = data[i].id,
-                    hearts = {
-                        title, img, description, id,
-                    };
-                if (toggle === true) {
-                    fetch(urlsweet, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(hearts)
-                    }
-                    )
-                        .then(r => {
-                            if (r.ok) {
-                                fetch(urlsweet)
-                                    .then(r => r.json())
-                                    .then(data => wishlist(data))
-                            }
-                        })
-                        .catch(error => e.target.innerHTML = `${error}`);
+                    hearts = { title, img, description, id, color: "green" };
+                arr.push(hearts)
+                wishlist(hearts)
 
-                }
+
             }
         })
     }
 }
+function wishlist(par) {
+    fetch(urlsweet, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(par)
+    }).catch(error => console.log(error))
 
-fetch(urlsweet)
-    .then(r => r.json())
-    .then(data => wishlist(data))
-
-function wishlist(data) {
-    contenier.innerText = `${data.length}`;
-    count_hidden.innerText = `${data.length}`;
 }
 
 
