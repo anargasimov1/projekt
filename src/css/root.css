@@ -284,6 +284,9 @@ body{
         height: auto;
         align-items: center;
     }
-
+.contact_us,.contact_nav,.contact_logo , .contact_cake{
+    justify-content: center;
+    align-items: center;
+}
 
 }
