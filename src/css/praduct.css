@@ -194,7 +194,10 @@
 .swiper_slide_item:hover>.img_item>img {
     scale: 1;
 }
-
+.img_item{
+    width: 230px;
+    height: 200px;
+}
 .swiper_slide_item:hover>.card_btn {
     bottom: 5px;
 }
@@ -310,7 +313,7 @@
         top: 50%;
     }
     #search{
-        width: 100px;
+        width: 300px;
         margin-left: 20px;
     }
 

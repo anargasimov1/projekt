@@ -28,61 +28,88 @@ setInterval(() => {
 
 // praducts
 
-const url = "https://living-chemical-shampoo.glitch.me/swiper",
+const url = "https://hilarious-rectangular-principle.glitch.me/swiper",
     praducts = document.getElementById("praducts"),
     contenier = document.querySelector(".count"),
     urlsweet = "https://grizzly-pastoral-stove.glitch.me/sweets",
     count_hidden = document.querySelector(".count_hidden"),
     serach = document.getElementById("serach");
+
 let arr = [];
 let toggle = false;
-let color = "red"
 
-fetch(url)
-    .then(r => r.json())
-    .then(data => addpraducts(data))
-    .catch(error => praducts.innerHTML = `${error}`);
+
+function refresh() {
+    fetch(url)
+        .then(r => r.json())
+        .then(data => addpraducts(data))
+        .catch(error => praducts.innerHTML = `${error}`)
+}
+
+refresh();
 
 function addpraducts(data) {
+    praducts.innerHTML = "";
     for (let i = 0; i < data.length; ++i) {
         praducts.innerHTML +=
             `
       <div class="swiper_slide_item">
-       <div class="img_item"> <img src=${data[i].img}></div>
+       <div class="img_item"> <img  src=${data[i].img}></div>
         <h3>${data[i].title}</h3>
         <p>${data[i].description}</p>
                   <><><><><><><><><><><><><><><><><>
         <button class="card_btn" type="button">$20 | Oreder Now</button>
-              <button type="button"><i  data-role = ${data[i].id} class="fa-regular fa-heart"></i></button>
+              <button data-id = ${data[i].id}
+               data-src=${data[i].img}
+               data-title=${data[i].title}
+               data-about=${data[i].description}
+               type="button"><i class="fa-regular fa-heart"></i></button>
           </div>
         `
-        document.addEventListener("click", e => {
-            toggle = true;
-            let id = e.target.dataset.role;
-            if (id === data[i].id) {
-                let title = data[i].title,
-                    img = data[i].img,
-                    description = data[i].description,
-                    id = data[i].id,
-                    hearts = { title, img, description, id, color: "green" };
-                arr.push(hearts)
-                wishlist(hearts)
-
-
-            }
-        })
     }
 }
-function wishlist(par) {
-    fetch(urlsweet, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(par)
-    }).catch(error => console.log(error))
+
+document.addEventListener("click", e => {
+    toggle = !toggle
+    let id = e.target.dataset.id
+    if (id) {
+        let title = e.target.dataset.title,
+            img = e.target.dataset.src,
+            description = e.target.dataset.about,
+            id = e.target.dataset.id,
+            hearts = { title, img, description, id, color: "green" };
+        addstronge(hearts);
+    }
+})
+
+
+function chekstronge() {
+    if (localStorage.getItem("wishlist") === null) {
+        arr = [];
+    }
+    else {
+        arr = JSON.parse(localStorage.getItem("wishlist"))
+    }
 
 }
+
+function addstronge(par) {
+    chekstronge()
+    arr.push(par)
+    localStorage.setItem("wishlist", JSON.stringify(arr))
+    count_hidden.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
+    contenier.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
+}
+
+if (JSON.parse(localStorage.getItem("wishlist")) === null) {
+    count_hidden.innerHTML = 0;
+    contenier.innerHTML = 0;
+}
+else {
+    count_hidden.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
+    contenier.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
+}
+
 
 
 // hover context

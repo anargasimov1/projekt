@@ -15,7 +15,7 @@ btn.addEventListener("click", () => {
 const btn_left = document.getElementById("btn_left"),
     btn_rigth = document.getElementById("btn_rigth"),
     swiper_slide = document.getElementById("swiper_slide"),
-    url = "https://living-chemical-shampoo.glitch.me/swiper",
+    url = "https://hilarious-rectangular-principle.glitch.me/swiper",
     swiper = document.querySelector(".swiper");
 
 
@@ -82,7 +82,7 @@ const footer_btn_left = document.getElementById("footer_swiper_button_left"),
     footer_btn_rigth = document.getElementById("footer_swiper_button_rigth"),
     footer_swiper = document.getElementById("footer_swiper"),
     footer_swiper_content = document.querySelector(".footer_swiper"),
-    url2 = "https://living-chemical-shampoo.glitch.me/footerswiper";
+    url2 = "https://hilarious-rectangular-principle.glitch.me/footerswiper";
 
 let temp = 0;
 let footercount = 0;
