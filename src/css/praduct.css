@@ -1,6 +1,6 @@
 @import url(./root.css);
 
-.count_hidden{
+.count_hidden {
     position: absolute;
     color: white;
     z-index: 2;
@@ -12,7 +12,7 @@
     padding: 2px 7px;
 }
 
-.hearts{
+.hearts {
     width: 20px;
     color: rgba(0, 128, 45, 0.963);
     font-size: 30px;
@@ -32,7 +32,7 @@
     position: relative;
 }
 
-.count{
+.count {
     position: absolute;
     font-size: 17px;
     right: -8px;
@@ -94,7 +94,7 @@
     z-index: -5;
 }
 
-#search{
+#search {
     width: 800px;
     margin-bottom: 90px;
     margin-left: 370px;
@@ -102,7 +102,7 @@
     padding-left: 5px;
 }
 
-.fa-magnifying-glass{
+.fa-magnifying-glass {
     position: relative;
     right: 30px;
     scale: 1.2;
@@ -194,10 +194,12 @@
 .swiper_slide_item:hover>.img_item>img {
     scale: 1;
 }
-.img_item{
+
+.img_item {
     width: 230px;
     height: 200px;
 }
+
 .swiper_slide_item:hover>.card_btn {
     bottom: 5px;
 }
@@ -271,7 +273,7 @@
         margin-left: 280px;
     }
 
-    #search{
+    #search {
         width: 500px;
         margin-left: 130px;
     }
@@ -289,6 +291,11 @@
 }
 
 @media only screen and (max-width:680px) {
+    .nav_hidden {
+        top: 0;
+        left: 0;  
+    }
+
     .section_img {
         display: none;
     }
@@ -312,7 +319,8 @@
         left: 0;
         top: 50%;
     }
-    #search{
+
+    #search {
         width: 300px;
         margin-left: 20px;
     }

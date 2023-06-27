@@ -22,9 +22,9 @@
     padding: 12px 0;
 }
 
-.swiper_slide_item>img {
-    width: 92%;
-    height: 50%;
+.img_item>img {
+    width: 300px;
+    height: 200px;
     border-bottom-right-radius: 25px;
 }
 

@@ -38,15 +38,13 @@ const url = "https://hilarious-rectangular-principle.glitch.me/swiper",
 let arr = [];
 let toggle = false;
 
+fetch(url)
+    .then(r => r.json())
+    .then(data => addpraducts(data))
+    .catch(error => praducts.innerHTML = `${error}`)
 
-function refresh() {
-    fetch(url)
-        .then(r => r.json())
-        .then(data => addpraducts(data))
-        .catch(error => praducts.innerHTML = `${error}`)
-}
 
-refresh();
+
 
 function addpraducts(data) {
     praducts.innerHTML = "";
@@ -58,11 +56,12 @@ function addpraducts(data) {
         <h3>${data[i].title}</h3>
         <p>${data[i].description}</p>
                   <><><><><><><><><><><><><><><><><>
-        <button class="card_btn" type="button">$20 | Oreder Now</button>
+        <button id="btn3" class="card_btn" type="button">$20 | Oreder Now</button>
               <button data-id = ${data[i].id}
                data-src=${data[i].img}
                data-title=${data[i].title}
                data-about=${data[i].description}
+               data-boolien =${localStorage.getItem(data[i].title, toggle)}
                type="button"><i class="fa-regular fa-heart"></i></button>
           </div>
         `
@@ -70,7 +69,6 @@ function addpraducts(data) {
 }
 
 document.addEventListener("click", e => {
-    toggle = !toggle
     let id = e.target.dataset.id
     if (id) {
         let title = e.target.dataset.title,
@@ -78,10 +76,20 @@ document.addEventListener("click", e => {
             description = e.target.dataset.about,
             id = e.target.dataset.id,
             hearts = { title, img, description, id, color: "green" };
-        addstronge(hearts);
+        let color = localStorage.getItem("color")
+        e.target.style.backgroundColor = `${color && "green"}`;
+        addstronge(hearts)
     }
+
 })
 
+
+function addstronge(par) {
+    chekstronge();
+    arr.push(par)
+    localStorage.setItem("wishlist", JSON.stringify(arr));
+    lengthsweets();
+}
 
 function chekstronge() {
     if (localStorage.getItem("wishlist") === null) {
@@ -93,23 +101,18 @@ function chekstronge() {
 
 }
 
-function addstronge(par) {
-    chekstronge()
-    arr.push(par)
-    localStorage.setItem("wishlist", JSON.stringify(arr))
-    count_hidden.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
-    contenier.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
+function lengthsweets() {
+    if (JSON.parse(localStorage.getItem("wishlist")) === null) {
+        count_hidden.innerHTML = 0;
+        contenier.innerHTML = 0;
+    }
+    else {
+        count_hidden.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
+        contenier.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
+    }
 }
 
-if (JSON.parse(localStorage.getItem("wishlist")) === null) {
-    count_hidden.innerHTML = 0;
-    contenier.innerHTML = 0;
-}
-else {
-    count_hidden.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
-    contenier.innerHTML = JSON.parse(localStorage.getItem("wishlist")).length;
-}
-
+lengthsweets()
 
 
 // hover context

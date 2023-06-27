@@ -37,11 +37,15 @@ function items() {
 items();
 
 document.addEventListener("click", e => {
-    if (e.target.dataset.role){
-        data.pop()
+    if (e.target.dataset.role) {
+        data.forEach((i,index)=>{
+            if(e.target.dataset.role === i.id)
+                data.splice(index,1)
+        })
+
     }
     localStorage.removeItem("wishlist");
-    localStorage.setItem("wishlist",JSON.stringify(data))
+    localStorage.setItem("wishlist", JSON.stringify(data))
     items()
 })
 
