@@ -9,7 +9,7 @@ let modal = false;
 
 btn.addEventListener("click", () => {
     modal = !modal;
-    modal === true ? menu.style.scale = "1" : menu.style.scale = "0";
+    modal === true ? menu.style.height = "200px" : menu.style.height = "0";
 });
 
 
