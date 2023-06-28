@@ -292,7 +292,7 @@
 
 @media only screen and (max-width:680px) {
     .nav_hidden {
-        top: 0;
+        top: 5px;
         left: 0;  
     }
 
